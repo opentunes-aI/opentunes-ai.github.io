@@ -3,129 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opentunes AI - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Opentunes AI - Democratizing AI Music Creation</title>
     <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #141e30, #243b55);
-            color: white;
-            text-align: center;
-            overflow-x: hidden;
+        :root {
+            --primary-color: #6200ea;
+            --secondary-color: #00e676;
+            --text-color: #ffffff;
+            --background-color: #121212;
+            --gradient-start: rgba(98, 0, 234, 0.8);
+            --gradient-end: rgba(0, 230, 118, 0.8);
         }
-        .hero {
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-image: url('https://source.unsplash.com/random/1920x1080/?music,technology,dark');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-color: #121212; /* Fallback color */
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.7);
+            z-index: -1;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        header {
+            background: rgba(18, 18, 18, 0.3);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            padding: 1rem 0;
+        }
+
+        header .container {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        .header-text {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            background: none;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--secondary-color);
+            color: var(--background-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #00c853;
+            transform: translateY(-3px);
+        }
+
+        .features {
+            padding: 3rem 0;
+            text-align: center;
+            background: rgba(18, 18, 18, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .features h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature {
+            background-size: cover;
+            background-position: center;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature i, .feature h4, .feature p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: #f0f0f0;
+        }
+
+        .waitlist {
+            background: rgba(98, 0, 234, 0.3);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .waitlist h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .waitlist p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .waitlist form {
+            display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: url('dynamic-wave-bg.jpg') no-repeat center center/cover;
-            padding: 20px;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #FF6F61;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin: 20px 0;
-        }
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-        .btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: 700;
-            color: white;
-            background: #FF6F61;
+
+        .waitlist input[type="email"] {
+            padding: 0.8rem;
+            width: 300px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
         }
-        .btn:hover {
-            background: #ff564f;
+
+        .waitlist input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
-        .countdown {
-            margin-top: 30px;
-            font-size: 1.2rem;
-        }
-        .about {
-            padding: 50px 20px;
-            background: #243b55;
-        }
-        .about h3 {
-            margin-bottom: 20px;
-        }
-        .features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .feature {
-            flex: 1;
-            max-width: 300px;
-            padding: 20px;
-            background: #1b2735;
-            border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        }
+
         footer {
-            padding: 10px 0;
-            font-size: 0.9rem;
-            background: #141e30;
+            background: rgba(18, 18, 18, 0.3);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
         }
-    </style>
-</head>
-<body>
-    <div class="hero">
-        <div class="logo">Opentunes AI</div>
-        <h1>Unleash Your Inner Music Genius with AI!</h1>
-        <h2>Coming Soon</h2>
-        <button class="btn">Notify Me</button>
-        <div class="countdown">Launch in: <span id="timer"></span></div>
-    </div>
-    <div class="about">
-        <h3>What is Opentunes AI?</h3>
-        <p>Opentunes AI is a groundbreaking platform that makes music production accessible to everyone. Create, share, and monetize your music with cutting-edge AI tools. Stay tuned for powerful features like melody generation, beat-making, vocal effects, and NFT integration!</p>
-        <div class="features">
-            <div class="feature">AI Melody Generator</div>
-            <div class="feature">Beat-Making Tools</div>
-            <div class="feature">Vocal Effects Processing</div>
-            <div class="feature">NFT Integration</div>
-        </div>
-    </div>
-    <footer>
-        &copy; 2024 Opentunes AI. All Rights Reserved.
-    </footer>
 
-    <script>
-        // Countdown Timer
-        const launchDate = new Date("2024-12-31T00:00:00").getTime();
-        const timer = document.getElementById('timer');
+        h1, h2, h3, p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = launchDate - now;
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            header .container {
+                flex-direction: column;
+            }
 
-            timer.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            .logo-container {
+                margin-bottom: 1rem;
+            }
 
-            if (distance < 0) {
-                timer.innerText = "Launched!";
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .waitlist input[type="email"] {
+                width: 100%;
             }
         }
+    </style>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo3.png" alt="Opentunes AI Logo" class="logo">
+            </div>
+            <div class="header-text">
+                <h1>Opentunes AI</h1>
+                <p>Democratizing AI Music Creation</p>
+            </div>
+        </div>
+    </header>
 
-        setInterval(updateCountdown, 1000);
-    </script>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Unleash Your Inner Music Geniu with AI</h2>
+            <p>Create, share, and monetize your AI-powered music</p>
+            <a href="#waitlist" class="btn">Join the Waitlist</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h3>Upcoming Features</h3>
+            <h4>Opentunes AI is a groundbreaking platform that makes music production accessible to everyone.</h4>
+            <h4>Create and showcae your music with cutting-edge AI tools.</h4> 
+            <h4>Stay tuned for powerful features like melody generation, beat-making, vocal effects, and NFT integration!</h4>
+            <br>
+            <div class="feature-grid">
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?music,notes');">
+                    <i class="fas fa-music"></i>
+                    <h4>AI Text to Melody</h4>
+                    <p>Transform your words into beautiful melodies</p>
+                </div>
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?lyrics,writing');">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h4>Lyrics and Song Generation</h4>
+                    <p>Turn your ideas into cool songs</p>
+                </div>
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?video,music');">
+                    <i class="fas fa-image"></i>
+                    <h4>Music Gen for Image/Video</h4>
+                    <p>Create perfect soundtracks for your visuals</p>
+                </div>
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?microphone,studio');">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h4>Vocal Effects Processing</h4>
+                    <p>Enhance your vocals with AI-powered effects</p>
+                </div>
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?community,music');">
+                    <i class="fas fa-users"></i>
+                    <h4>Community & Rewards</h4>
+                    <p>Share, vote, and earn from your creations</p>
+                </div>
+                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?blockchain,technology');">
+                    <i class="fas fa-link"></i>
+                    <h4>Web2 and Web3 Integration</h4>
+                    <p>Tokenomics of your music creation on the chain</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="waitlist" class="waitlist">
+        <div class="container">
+            <h3>Join the Waitlist</h3>
+            <p>Be among the first to experience the future of AI music creation</p>
+            <form action="https://formspree.io/f/your-formspree-endpoint" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn">Join Now</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Opentunes AI. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
