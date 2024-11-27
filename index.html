@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opentunes AI - Democratizing AI Music Creation</title>
-    <link rel="icon" type="image/jpeg" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/opentunes%20ai%20avatar%201-juuqp8N36FeSjmYKsnv9N4HkBOdQ1s.jpeg">
+    <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Opentunes%20AI%20favicon%205-CibMC57vtCP94oK7ocr38XLovwcLrC.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #6200ea;
@@ -61,7 +62,6 @@
             justify-content: space-between;
         }
 
-
         .header-text {
             text-align: center;
             flex-grow: 1;
@@ -112,14 +112,15 @@
             display: inline-block;
             padding: 1rem 2.5rem;
             border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            font-family: 'Poppins', sans-serif;
         }
 
         .btn::before {
@@ -145,8 +146,15 @@
         }
 
         .btn-primary {
-            background: var(--secondary-color);
-            color: var(--background-color);
+            background: linear-gradient(45deg, #6200ea, #00e676);
+            color: #ffffff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #7c4dff, #00e676);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
         .avatar-container {
@@ -386,12 +394,35 @@
                 font-size: 3rem;
             }
         }
+
+        .logo-container {
+            display: flex;
+            justify-content: center; /* Center the logo horizontally */
+            align-items: center; /* Center the logo vertically */
+        }
+
+        .logo {
+            max-width: 150px; /* Adjust as needed */
+            max-height: 150px; /* Adjust as needed */
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 100px;
+                max-height: 100px;
+            }
+        }
     </style>
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="container">
+            <div class="logo-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Opentunes%20AI%20logo%205-F5zzpW4rIB6DZk67HWEUpb3yKtUAcb.png" 
+                     alt="Opentunes AI Logo" 
+                     class="logo">
+            </div>
             <div class="header-text">
                 <h1 class="site-title">Opentunes AI</h1>
                 <p>Democratizing AI Music Creation</p>
@@ -423,12 +454,12 @@
             <h4>Stay tuned for powerful features like melody generation, beat-making, vocal effects, and NFT integration!</h4>
             <br>
             <div class="feature-grid">
-                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?music,notes');">
+                <div class="feature" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/feature%201%20bg-m3HizbUkg4eiZSJ1Fl0aL8lJGxxdli.png');">
                     <i class="fas fa-music"></i>
                     <h4>AI Text to Melody</h4>
                     <p>Transform your words into beautiful melodies</p>
                 </div>
-                <div class="feature" style="background-image: url('https://source.unsplash.com/random/600x400/?lyrics,writing');">
+                <div class="feature" style="background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/feature%202%20bg-kdNczqixuuYKL5iqFFP6ItFL3eE0sF.png');">
                     <i class="fas fa-pen-fancy"></i>
                     <h4>Lyrics and Song Generation</h4>
                     <p>Turn your ideas into cool songs</p>
@@ -463,7 +494,7 @@
             <p>Be among the first to experience the future of AI music creation</p>
             <form action="https://formspree.io/f/your-formspree-endpoint" method="POST">
                 <input type="email" name="email" placeholder="Enter your email" required>
-                <button type="submit" class="btn">Stay Tuned</button>
+                <button type="submit" class="btn btn-primary">Stay Tuned</button>
             </form>
         </div>
     </section>
