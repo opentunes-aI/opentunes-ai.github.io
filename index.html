@@ -414,12 +414,69 @@
         }
     </style>
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+    function openStayTunedPopup(email = '') {
+        // Google Form URL with your form ID
+        const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScg7w6gkzMxeKNJK_SCpTPDanscVSQCgd6WZIYUmnC_jMJhuQ/viewform';
+        
+        // If an email was provided, we'll add it as a prefilled parameter
+        const urlWithEmail = email ? 
+            `${googleFormUrl}?entry.EMAIL=${encodeURIComponent(email)}` : 
+            googleFormUrl;
+
+        // Open popup window
+        const popup = window.open(
+            urlWithEmail,
+            'StayTunedPopup',
+            'width=600,height=800,resizable=yes,scrollbars=yes'
+        );
+
+        // Focus on the popup
+        if (popup) popup.focus();
+    }
+
+    function handleStayTuned(event) {
+        event.preventDefault();
+        
+        // If this was triggered from the email form
+        const form = event.target.closest('form');
+        if (form) {
+            const emailInput = form.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value) {
+                // Validate email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailRegex.test(emailInput.value)) {
+                    openStayTunedPopup(emailInput.value);
+                    return;
+                }
+            }
+        }
+        
+        // If no valid email or button clicked directly
+        openStayTunedPopup();
+    }
+
+    // Add event listeners when the document is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add click handler to the hero section button
+        const heroButton = document.querySelector('.hero .btn-primary');
+        if (heroButton) {
+            heroButton.addEventListener('click', handleStayTuned);
+        }
+
+        // Add submit handler to the waitlist form
+        const waitlistForm = document.querySelector('.waitlist form');
+        if (waitlistForm) {
+            waitlistForm.addEventListener('submit', handleStayTuned);
+        }
+    });
+    </script>
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo-container">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Opentunes%20AI%20Logo%204%20-%20Dark-vc9If325q5NRQhSEEHgnaWzHu1FPvi.png" 
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Opentunes%20AI%20Logo%20-%201%20Dark-Bef9Ga0ENLza8iU5vjhYmyJdofMi4A.png" 
                      alt="Opentunes AI Logo" 
                      class="logo">
             </div>
@@ -442,7 +499,7 @@
                 <span class="musical-note note-2">♫</span>
                 <span class="musical-note note-3">♪</span>
             </div>
-            <a href="#" class="btn btn-primary">Stay Tuned</a>
+            <button class="btn btn-primary">Stay Tuned</button>
         </div>
     </section>
 
@@ -491,7 +548,7 @@
         <div class="container">
             <h3>Stay Updated</h3>
             <p>Be among the first to experience the future of AI music creation</p>
-            <form action="https://formspree.io/f/your-formspree-endpoint" method="POST">
+            <form>
                 <input type="email" name="email" placeholder="Enter your email" required>
                 <button type="submit" class="btn btn-primary">Stay Tuned</button>
             </form>
